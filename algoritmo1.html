@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Edades</title>
+</head>
+<body>
+    <h1>Comparador de Edades</h1>
+    <div>
+        <h2>Persona 1</h2>
+        <label for="nombre1">Nombre:</label>
+        <input type="text" id="nombre1" required>
+        
+        <label for="edad1">Edad:</label>
+        <input type="number" id="edad1" min="0" required>
+    </div>
+    
+    <div>
+        <h2>Persona 2</h2>
+        <label for="nombre2">Nombre:</label>
+        <input type="text" id="nombre2" required>
+        
+        <label for="edad2">Edad:</label>
+        <input type="number" id="edad2" min="0" required>
+    </div>
+    <button onclick="compararEdades()">Comparar Edades</button>
+    <div id="resultado"></div>
+    <script>
+        function compararEdades() {
+            const nombre1 = document.getElementById('nombre1').value.trim();
+            const edad1 = parseInt(document.getElementById('edad1').value);
+            
+            const nombre2 = document.getElementById('nombre2').value.trim();
+            const edad2 = parseInt(document.getElementById('edad2').value);
+
+            if (!nombre1 || isNaN(edad1) || !nombre2 || isNaN(edad2)) {
+                alert('Por favor, complete todos los campos correctamente.');
+                return;
+            }
+            let mensaje;
+            if (edad1 > edad2) {
+                mensaje = `${nombre1} es mayor que ${nombre2}`;
+            } else if (edad1 < edad2) {
+                mensaje = `${nombre1} es menor que ${nombre2}`;
+            } else {
+                mensaje = `${nombre1} y ${nombre2} tienen la misma edad`;
+            }
+            document.getElementById('resultado').textContent = mensaje;
+        }
+    </script>
+</body>
+</html>

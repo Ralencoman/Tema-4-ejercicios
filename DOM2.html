@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Colores</title>
+    <style>
+        #capaColor {
+            width: 100%;
+            height: 200px;
+            background-color: red;
+            margin-bottom: 20px;
+        }
+        .contenedor {
+            padding: 20px;
+        }
+        label {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="capaColor"></div>
+    <div class="contenedor">
+        <label for="selectorColor">Color:</label>
+        <select id="selectorColor" onchange="cambiarColor()">
+            <option value="red" selected>Rojo</option>
+            <option value="green">Verde</option>
+            <option value="yellow">Amarillo</option>
+            <option value="blue">Azul</option>
+        </select>
+    </div>
+    <script>
+        function cambiarColor() {
+            const selector = document.getElementById('selectorColor');
+            const capa = document.getElementById('capaColor');
+            const colorSeleccionado = selector.value;
+            capa.style.backgroundColor = colorSeleccionado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        label {
+            font-size: 18px;
+        }
+        select {
+            font-size: 16px;
+            margin: 10px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pedido</h1>
+    <form id="pedidoForm">
+        <label for="producto">Producto:</label>
+        <select id="producto" name="producto">
+            <option value="">Elija producto</option>
+            <option value="ordenador">Ordenador</option>
+            <option value="portatil">Portátil</option>
+            <option value="tablet">Tablet</option>
+        </select>
+        <br>
+        <img id="imagenProducto" style="display: none;" alt="Imagen del producto">
+        <br><br>
+        <button type="submit">Enviar Pedido</button>
+    </form>
+    <script>
+        const productoSelect = document.getElementById("producto");
+        const imagenProducto = document.getElementById("imagenProducto");
+        const form = document.getElementById("pedidoForm");
+        productoSelect.addEventListener("change", function () {
+    const valor = productoSelect.value;
+    switch (valor) {
+        case "ordenador":
+            imagenProducto.src = "/imagenes_formulario/ordenador.jpg";
+            imagenProducto.alt = "Ordenador";
+            imagenProducto.style.display = "inline";
+            break;
+        case "portatil":
+            imagenProducto.src = "/imagenes_formulario/portatil.jpg";
+            imagenProducto.alt = "Portátil";
+            imagenProducto.style.display = "inline";
+            break;
+        case "tablet":
+            imagenProducto.src = "/imagenes_formulario/tablet.jpg";
+            imagenProducto.alt = "Tablet";
+            imagenProducto.style.display = "inline";
+            break;
+        default:
+            imagenProducto.src = "";
+            imagenProducto.alt = "Imagen del producto";
+            imagenProducto.style.display = "none";
+    }
+});
+        form.addEventListener("submit", function (e) {
+            if (productoSelect.value === "") {
+                alert("Por favor, seleccione un producto antes de enviar.");
+                e.preventDefault(); 
+            }
+        });
+    </script>
+</body>
+</html>
